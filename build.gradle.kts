@@ -15,13 +15,12 @@ plugins {
     java
     jacoco
     `maven-publish`
-    idea
 }
 
 group = "ru.arsysop"
 version = "0.1"
 
-repositories{
+repositories {
     mavenCentral()
 }
 
@@ -30,15 +29,31 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+}
+
 tasks.test {
     useJUnitPlatform {
         systemProperties["junit.jupiter.testinstance.lifecycle.default"] = "per_class"
     }
 }
 
-jacoco {
+tasks.jacocoTestReport {
+    reports {
+        csv.isEnabled = false
+        html.isEnabled = false
+        xml.isEnabled = true
+        xml.destination = file("$buildDir/test-coverage.xml")
 
+    }
 }
+
 
 
 
