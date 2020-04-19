@@ -26,13 +26,13 @@ import java.util.function.Supplier;
 public final class CachingSupplier<T> implements Supplier<T> {
 
 	private final Supplier<T> supply;
-	private final List<T> value = new ArrayList<T>(1);
+	private final List<T> value = new ArrayList<>(1);
 
 	/**
 	 * To create a <i>lateinit</i> value, you should specify a way to {@code get} it when it's requested.
 	 *
-	 * @param supply a function that builds <i>the lateinit value</i>. It is guaranteed to
-	 *                 be called ones and only when {@linkplain Supplier#get} method is called.
+	 * @param supply a function that builds <i>the lateinit value</i>. It is guaranteed to be called ones and only when
+	 *               {@linkplain Supplier#get} method is called.
 	 * @since 0.1
 	 */
 	public CachingSupplier(Supplier<T> supply) {
@@ -41,7 +41,7 @@ public final class CachingSupplier<T> implements Supplier<T> {
 	}
 
 	/**
-	 * Returns cashed value. The first call begets {@code the value retrieval} and cashing.
+	 * Returns cached value. The first call begets {@code the value retrieval} and caching.
 	 *
 	 * @since 0.1
 	 */

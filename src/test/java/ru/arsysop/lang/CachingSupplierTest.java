@@ -12,12 +12,8 @@
  ********************************************************************************/
 package ru.arsysop.lang;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CachingSupplierTest implements CachingContractTest {
 

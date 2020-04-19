@@ -28,7 +28,6 @@ interface CachingContractTest {
 		assertTrue(supplier.get().startsWith(Long.toHexString(System.currentTimeMillis()).substring(0, 7)));
 	}
 
-
 	@Test
 	default void creationHappensLazily() {
 		AtomicInteger counter = new AtomicInteger(0);

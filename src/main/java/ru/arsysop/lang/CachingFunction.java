@@ -24,7 +24,7 @@ import java.util.function.Supplier;
  * </p>
  *
  * <p>
- * Seat of mutability caused by prohibition of any calculation in a ctor and cashing.
+ * Seat of mutability caused by prohibition of any calculation in a ctor and caching.
  * </p>
  *
  * <p>
@@ -49,7 +49,7 @@ import java.util.function.Supplier;
  * </p>
  *
  * <p>
- * Then the result is cashed (forever) and all further {@code get}s do not cause
+ * Then the result is cached (forever) and all further {@code get}s do not cause
  * any calculation.
  * </p>
  *
@@ -57,8 +57,8 @@ import java.util.function.Supplier;
  * <h4>1: final field initialization</h4>
  *
  * <pre>
- * private final Cashed<Categories> categories =
- * 	new Cashed(source, array -> array.map ( element -> new Category((JSONObject)element) ))
+ * private final CachingFunction<Categories> categories =
+ * 	new CachingFunction(source, array -> array.map ( element -> new Category((JSONObject)element) ))
  * </pre>
  *
  * <h4>2: value retrieval</h4>
@@ -71,14 +71,14 @@ import java.util.function.Supplier;
  * </pre>
  *
  * @param <S></S> type of data source object
- * @param <T></T> type of data retrieved and cashed
+ * @param <T></T> type of data retrieved and cached
  * @since 0.1
  */
 public final class CachingFunction<S, T> implements Supplier<T> {
 
 	private final S source;
 	private final Function<S, T> retrieve;
-	private final List<T> value = new ArrayList<T>(1);
+	private final List<T> value = new ArrayList<>(1);
 
 	/**
 	 * To create a <i>lateinit</i> value, you should specify a {@code source} for initialization and a {@code way} to
@@ -97,7 +97,7 @@ public final class CachingFunction<S, T> implements Supplier<T> {
 	}
 
 	/**
-	 * Returns cashed value. The first call begets {@code the value retrieval} and cashing.
+	 * Returns cached value. The first call begets {@code the value retrieval} and caching.
 	 *
 	 * @since 0.1
 	 */

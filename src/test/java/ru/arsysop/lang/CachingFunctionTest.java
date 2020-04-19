@@ -17,13 +17,13 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class CachingFunctionTest implements  CachingContractTest{
+class CachingFunctionTest implements CachingContractTest {
 
 	@Override
 	public Supplier<String> hexNow() {
-		return  new CachingFunction<>(System.currentTimeMillis(), Long::toHexString);
+		return new CachingFunction<>(System.currentTimeMillis(), Long::toHexString);
 	}
 
 	@Override
