@@ -24,7 +24,7 @@ import java.util.function.Supplier;
  * </p>
  *
  * <p>
- * Seat of mutability caused by prohibition of any calculation in a ctor and caching.
+ * Seat of mutability caused by prohibition of any calculation in a ctor and necessity to reuse a complicated calculation result.
  * </p>
  *
  * <p>
@@ -54,24 +54,24 @@ import java.util.function.Supplier;
  * </p>
  *
  * <h3>Sample</h3>
- * <h4>1: final field initialization</h4>
- *
  * <pre>
- * private final CachingFunction<Categories> categories =
- * 	new CachingFunction(source, array -> array.map ( element -> new Category((JSONObject)element) ))
- * </pre>
+ * public final class User {
  *
- * <h4>2: value retrieval</h4>
+ * 	private final CachingFunction&lt;String, String&gt; name;
  *
- * <pre>
+ *	public User(String validEmail) {
+ * 		this.name =  new CachingFunction&lt;&gt;(validEmail, email -&gt; email.substring(0, email.indexOf('@')));
+ * 	}
  *
- * Category byId(String id) {
- * 	return categories.get().find (category -> category.id() == id }
+ * 	public String name(){
+ * 		return name.get(); // calculation is performed only for the first call
+ * 	}
+ *
  * }
  * </pre>
  *
- * @param <S></S> type of data source object
- * @param <T></T> type of data retrieved and cached
+ * @param <S> type of data source object
+ * @param <T> type of data retrieved and cached
  * @since 0.1
  */
 public final class CachingFunction<S, T> implements Supplier<T> {
@@ -107,4 +107,5 @@ public final class CachingFunction<S, T> implements Supplier<T> {
 		}
 		return value.get(0);
 	}
+
 }
