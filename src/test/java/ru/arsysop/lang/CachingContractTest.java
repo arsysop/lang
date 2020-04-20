@@ -22,21 +22,22 @@ import static org.junit.jupiter.api.Assertions.*;
 interface CachingContractTest {
 
 	@Test
-	default void creationHappens() {
-		Supplier<String> supplier = hexNow();
+	default void retrievalHappens() {
+		Long millis = System.currentTimeMillis();
+		Supplier<String> supplier = hex(millis);
 		assertNotNull(supplier.get());
-		assertTrue(supplier.get().startsWith(Long.toHexString(System.currentTimeMillis()).substring(0, 7)));
+		assertEquals(Long.toHexString(millis), supplier.get());
 	}
 
 	@Test
-	default void creationHappensLazily() {
+	default void retrievalHappensLazily() {
 		AtomicInteger counter = new AtomicInteger(0);
 		counting(counter);
 		assertEquals(0, counter.get());
 	}
 
 	@Test
-	default void creationHappensOnes() {
+	default void retrievalHappensOnes() {
 		AtomicInteger counter = new AtomicInteger(0);
 		Supplier<String> supplier = counting(counter);
 		for (int i = 0; i < 5; i++) {
@@ -51,9 +52,9 @@ interface CachingContractTest {
 	}
 
 	/**
-	 * Supply hex string of current millis
+	 * Supply hex string of the given {@code value}
 	 */
-	Supplier<String> hexNow();
+	Supplier<String> hex(Long value);
 
 	/**
 	 * Supplier provided must increment {@code counter} on each <i>retrieve</i> request

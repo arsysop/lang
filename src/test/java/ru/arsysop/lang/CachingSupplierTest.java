@@ -18,8 +18,8 @@ import java.util.function.Supplier;
 class CachingSupplierTest implements CachingContractTest {
 
 	@Override
-	public Supplier<String> hexNow() {
-		return new CachingSupplier<>(() -> Long.toHexString(System.currentTimeMillis()));
+	public Supplier<String> hex(Long value) {
+		return new CachingSupplier<>(() -> Long.toHexString(value));
 	}
 
 	@Override

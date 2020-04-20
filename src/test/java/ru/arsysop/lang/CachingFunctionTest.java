@@ -22,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class CachingFunctionTest implements CachingContractTest {
 
 	@Override
-	public Supplier<String> hexNow() {
-		return new CachingFunction<>(System.currentTimeMillis(), Long::toHexString);
+	public Supplier<String> hex(Long value) {
+		return new CachingFunction<>(value, Long::toHexString);
 	}
 
 	@Override
