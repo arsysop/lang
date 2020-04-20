@@ -54,6 +54,29 @@ tasks.jacocoTestReport {
     }
 }
 
+tasks.withType(Jar::class.java) {
+    manifest {
+        extendManifest(Manifest@ this)
+    }
+}
 
+tasks.getByName("sourcesJar") {
+    (this as Jar).apply {
+        from(
+            sourceSets.getByName(SourceSet.MAIN_SOURCE_SET_NAME).allSource,
+            sourceSets.getByName(SourceSet.TEST_SOURCE_SET_NAME).allSource,
+            file("README.md")
+        )
+    }
+}
 
-
+fun extendManifest(mf: Manifest): Unit {
+    mf.attributes(
+        "Bundle-ManifestVersion" to "2",
+        "Bundle-SymbolicName" to project.name,
+        "Bundle-Name" to project.name,
+        "Bundle-Version" to project.version,
+        "Bundle-Vendor" to "ArSysOp",
+        "Bundle-RequiredExecutionEnvironment" to "JavaSE-1.8"
+    )
+}
