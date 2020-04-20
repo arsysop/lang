@@ -1,15 +1,15 @@
-/********************************************************************************
+/*******************************************************************************
  * Copyright (c) 2020 ArSysOp
  *
  * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License 2.0 which is available at
- * https://www.eclipse.org/legal/epl-2.0/.
+ * terms of the MIT which is available at
+ * https://spdx.org/licenses/MIT.html#licenseText
  *
- * SPDX-License-Identifier: EPL-2.0
+ * SPDX-License-Identifier: MIT
  *
  * Contributors:
- *   ArSysOp - initial API and implementation
- ********************************************************************************/
+ *     ArSysOp - initial API and implementation
+ *******************************************************************************/
 package ru.arsysop.lang;
 
 import java.util.concurrent.atomic.AtomicInteger;
