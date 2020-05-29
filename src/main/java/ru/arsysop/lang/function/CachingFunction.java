@@ -10,7 +10,7 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package ru.arsysop.lang;
+package ru.arsysop.lang.function;
 
 import java.util.ArrayList;
 import java.util.List;
