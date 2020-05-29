@@ -20,6 +20,9 @@ plugins {
 group = "ru.arsysop"
 version = "0.1"
 
+project.also {
+    it.description = "Java lang extensions for orthodox OOP coding"
+}
 repositories {
     mavenCentral()
 }
@@ -79,4 +82,40 @@ fun extendManifest(mf: Manifest): Unit {
         "Bundle-Vendor" to "ArSysOp",
         "Bundle-RequiredExecutionEnvironment" to "JavaSE-1.8"
     )
+}
+
+publishing {
+    publications {
+        repositories {
+            maven {
+                url = uri("$buildDir/local-repo")
+            }
+        }
+        register<MavenPublication>("gpr") {
+            from(components["java"])
+            pom {
+                name.set(project.name)
+                description.set(project.description)
+                url.set("https://github.com/ArSysOp/lang")
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://spdx.org/licenses/MIT.html")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("eparovyhsnaya")
+                        name.set("Elena Parovyshnaia")
+                        email.set("elena.parovyshnaya@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/arsysop/lang.git")
+                    developerConnection.set("scm:git:ssh://github.com/arsysop/lang.git")
+                    url.set("https://github.com/arsysop/lang")
+                }
+            }
+        }
+    }
 }
