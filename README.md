@@ -1,6 +1,6 @@
 # lang
 
-[![Build](https://github.com/arsysop/liho/workflows/Java%20CI/badge.svg)](https://github.com/arsysop/liho/actions?query=workflow%3A%22Java+CI%22)
+[![Build](https://github.com/arsysop/lang/workflows/Java%20CI/badge.svg)](https://github.com/arsysop/lang/actions?query=workflow%3A%22Java+CI%22)
 [![Hits-of-Code](https://hitsofcode.com/github/arsysop/lang)](https://hitsofcode.com/view/github/arsysop/lang)
 [![codecov](https://codecov.io/gh/arsysop/lang/branch/master/graph/badge.svg)](https://codecov.io/gh/arsysop/lang)
 
