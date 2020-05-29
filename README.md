@@ -9,7 +9,7 @@
 Orthodox OOP constructions of extensive use that we need badly in all our projects.
 
 Currently contains `java.util.function` extensions `CachingFunction` and `CachingSupplier` 
-who look like `Function` and `Supplier` correspondingly, but encapsulate caching befaviour.
+who look like `Function` and `Supplier` correspondingly, but encapsulate caching behaviour.
 
    
 
