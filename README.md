@@ -4,7 +4,7 @@
 [![Hits-of-Code](https://hitsofcode.com/github/arsysop/lang)](https://hitsofcode.com/view/github/arsysop/lang)
 [![codecov](https://codecov.io/gh/arsysop/lang/branch/master/graph/badge.svg)](https://codecov.io/gh/arsysop/lang)
 
-[![EPL-2.0 License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/arsysop/lang/blob/master/LICENSE)
+[![.](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/arsysop/lang/blob/master/LICENSE)
 
 Orthodox OOP constructions of extensive use that we need badly in all our projects.
 
