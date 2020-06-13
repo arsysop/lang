@@ -20,9 +20,6 @@ plugins {
 group = "ru.arsysop.lang"
 version = "0.1"
 
-project.also {
-    it.description = "Java lang extensions for orthodox OOP coding"
-}
 repositories {
     mavenCentral()
 }
@@ -75,10 +72,11 @@ tasks.getByName("sourcesJar") {
 
 fun extendManifest(mf: Manifest) {
     val copyright: String by project
+    val bundle: String by project
     mf.attributes(
         "Bundle-ManifestVersion" to "2",
         "Bundle-SymbolicName" to "ru.arsysop.lang",
-        "Bundle-Name" to "ru.arsysop.lang",
+        "Bundle-Name" to bundle,
         "Bundle-Version" to project.version,
         "Bundle-Vendor" to "ArSysOp",
         "Bundle-RequiredExecutionEnvironment" to "JavaSE-1.8",
@@ -100,8 +98,8 @@ publishing {
         register<MavenPublication>("gpr") {
             from(components["java"])
             pom {
-                name.set(project.name)
-                description.set(project.description)
+                val explanation: String by project
+                description.set(explanation)
                 url.set("https://github.com/ArSysOp/lang")
                 licenses {
                     license {
