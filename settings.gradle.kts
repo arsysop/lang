@@ -10,4 +10,4 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-rootProject.name = "ru.arsysop.lang"
+rootProject.name = "lang"
