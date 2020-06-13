@@ -74,6 +74,7 @@ tasks.getByName("sourcesJar") {
 }
 
 fun extendManifest(mf: Manifest) {
+    val copyright: String by project
     mf.attributes(
         "Bundle-ManifestVersion" to "2",
         "Bundle-SymbolicName" to "ru.arsysop.lang",
@@ -81,6 +82,7 @@ fun extendManifest(mf: Manifest) {
         "Bundle-Version" to project.version,
         "Bundle-Vendor" to "ArSysOp",
         "Bundle-RequiredExecutionEnvironment" to "JavaSE-1.8",
+        "Bundle-Copyright" to copyright,
         "Export-Package" to "ru.arsysop.lang.function;version=${project.version}",
         "Group" to project.group,
         "Artifact" to project.name,
