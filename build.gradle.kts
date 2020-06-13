@@ -17,7 +17,7 @@ plugins {
     `maven-publish`
 }
 
-group = "ru.arsysop"
+group = "ru.arsysop.lang"
 version = "0.1"
 
 project.also {
@@ -53,7 +53,6 @@ tasks.jacocoTestReport {
         html.isEnabled = false
         xml.isEnabled = true
         xml.destination = file("$buildDir/test-coverage.xml")
-
     }
 }
 
@@ -68,19 +67,24 @@ tasks.getByName("sourcesJar") {
         from(
             sourceSets.getByName(SourceSet.MAIN_SOURCE_SET_NAME).allSource,
             sourceSets.getByName(SourceSet.TEST_SOURCE_SET_NAME).allSource,
-            file("README.md")
+            file("README.md"),
+            file("LICENSE")
         )
     }
 }
 
-fun extendManifest(mf: Manifest): Unit {
+fun extendManifest(mf: Manifest) {
     mf.attributes(
         "Bundle-ManifestVersion" to "2",
-        "Bundle-SymbolicName" to project.name,
-        "Bundle-Name" to project.name,
+        "Bundle-SymbolicName" to "ru.arsysop.lang",
+        "Bundle-Name" to "ru.arsysop.lang",
         "Bundle-Version" to project.version,
         "Bundle-Vendor" to "ArSysOp",
-        "Bundle-RequiredExecutionEnvironment" to "JavaSE-1.8"
+        "Bundle-RequiredExecutionEnvironment" to "JavaSE-1.8",
+        "Export-Package" to "ru.arsysop.lang.function;version=${project.version}",
+        "Group" to project.group,
+        "Artifact" to project.name,
+        "Version" to project.version
     )
 }
 
