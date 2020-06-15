@@ -98,6 +98,7 @@ publishing {
         register<MavenPublication>("gpr") {
             from(components["java"])
             pom {
+                name.set(project.name)
                 val explanation: String by project
                 description.set(explanation)
                 url.set("https://github.com/ArSysOp/lang")
